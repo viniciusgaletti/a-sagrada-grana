@@ -83,10 +83,14 @@ export default function AuthPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8 md:p-8">
-      <div className="w-full max-w-[420px] rounded-none border-0 bg-transparent p-0 shadow-none md:rounded-xl md:border md:bg-card md:p-10 md:shadow-sm">
-        <div className="mb-8 text-center">
-          <h1 className="font-headline text-[2rem] font-bold text-primary mb-2">A Sagrada Grana</h1>
-          <p className="text-sm text-muted-foreground">Sua consciência financeira em um lugar só</p>
+      <div className="w-full max-w-[420px] bg-card border border-border rounded-[20px] shadow-[0_8px_32px_rgba(107,92,231,0.08),0_2px_8px_rgba(0,0,0,0.04)] p-[28px] md:p-[48px]">
+        <div className="text-center">
+          <h1 className="font-headline text-[2rem] font-semibold tracking-[-0.01em] text-primary mb-[4px]">
+            A Sagrada Grana
+          </h1>
+          <p className="text-[0.875rem] text-muted-foreground mb-[32px]">
+            Sua consciência financeira em um lugar só
+          </p>
         </div>
 
         <Form {...form}>
@@ -95,17 +99,20 @@ export default function AuthPage() {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>E-mail</FormLabel>
+                <FormItem className="space-y-0">
+                  <FormLabel className="text-[0.875rem] font-medium text-foreground block mb-[6px]">
+                    E-mail
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="email"
                       placeholder="seu@email.com"
                       disabled={isLoading}
+                      className="h-[44px] rounded-[10px] border-[1.5px] border-border px-[14px] text-[0.9375rem] transition-colors duration-150 focus:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 focus-visible:ring-offset-0"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-[0.8rem] text-destructive mt-[4px]" />
                 </FormItem>
               )}
             />
@@ -114,17 +121,20 @@ export default function AuthPage() {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Senha</FormLabel>
+                <FormItem className="space-y-0">
+                  <FormLabel className="text-[0.875rem] font-medium text-foreground block mb-[6px]">
+                    Senha
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       placeholder={isLogin ? '••••••••' : 'Mínimo 6 caracteres'}
                       disabled={isLoading}
+                      className="h-[44px] rounded-[10px] border-[1.5px] border-border px-[14px] text-[0.9375rem] transition-colors duration-150 focus:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 focus-visible:ring-offset-0"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-[0.8rem] text-destructive mt-[4px]" />
                 </FormItem>
               )}
             />
@@ -134,12 +144,19 @@ export default function AuthPage() {
                 control={form.control}
                 name="confirmPassword"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Confirmar senha</FormLabel>
+                  <FormItem className="space-y-0">
+                    <FormLabel className="text-[0.875rem] font-medium text-foreground block mb-[6px]">
+                      Confirmar senha
+                    </FormLabel>
                     <FormControl>
-                      <Input type="password" disabled={isLoading} {...field} />
+                      <Input
+                        type="password"
+                        disabled={isLoading}
+                        className="h-[44px] rounded-[10px] border-[1.5px] border-border px-[14px] text-[0.9375rem] transition-colors duration-150 focus:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 focus-visible:ring-offset-0"
+                        {...field}
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-[0.8rem] text-destructive mt-[4px]" />
                   </FormItem>
                 )}
               />
@@ -148,7 +165,7 @@ export default function AuthPage() {
             <div className="pt-2">
               <Button
                 type="submit"
-                className="w-full rounded-full"
+                className="w-full h-[44px] rounded-[9999px] bg-primary text-white font-semibold text-[0.9375rem] tracking-[0.01em] transition-opacity duration-150 hover:bg-primary hover:opacity-[0.92]"
                 disabled={!form.formState.isValid || isLoading}
               >
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -156,11 +173,11 @@ export default function AuthPage() {
               </Button>
             </div>
 
-            <div className="text-center pt-2">
+            <div className="text-center">
               <button
                 type="button"
                 onClick={toggleMode}
-                className="text-sm text-primary hover:underline"
+                className="text-[0.875rem] text-primary text-center mt-[16px] cursor-pointer hover:underline inline-block w-full"
                 disabled={isLoading}
               >
                 {isLogin ? 'Não tem conta? Criar conta' : 'Já tem conta? Entrar'}
